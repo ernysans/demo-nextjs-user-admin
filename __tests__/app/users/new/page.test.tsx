@@ -1,7 +1,11 @@
+/**
+ * @jest-environment jsdom
+ */
+import '@testing-library/jest-dom';
 import React from 'react';
 import {render, screen} from '@testing-library/react';
-import '@testing-library/jest-dom';
 import Page from '@/app/users/new/page';
+import {describe} from '@jest/globals';
 
 describe('Add New User Page', () => {
     it('renders form fields and buttons', () => {
