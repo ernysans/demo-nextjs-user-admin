@@ -1,7 +1,6 @@
 'use server';
 import {redirect} from "next/navigation";
 import {User, UserStore} from "@/lib/models/User";
-import {revalidatePath} from "next/cache";
 
 export interface ActionResponse extends User {
     errors?: string;
@@ -26,8 +25,7 @@ export async function addUser(initialState: ActionResponse, formData: FormData):
             errors: error instanceof Error ? `Error: ${error.message}` : 'Failed to add user. Please try again later.',
         }
     }
-    // Invalidate the cache for the / route
-    revalidatePath('/');
+    // Redirect to the home
     redirect(`/`);
 }
 
@@ -52,8 +50,7 @@ export async function updateUser(initialState: ActionResponse, formData: FormDat
             errors: error instanceof Error ? `Error: ${error.message}` : 'Failed to update user. Please try again later.',
         }
     }
-    // Invalidate the cache for the / route
-    revalidatePath('/');
+    // Redirect to the home
     redirect(`/`);
 }
 
@@ -72,9 +69,6 @@ export async function deleteUser(initialState: ActionResponse, formData: FormDat
             errors: error instanceof Error ? `Error: ${error.message}` : 'Failed to delete user. Please try again later.',
         } as ActionResponse;
     }
-    // Invalidate the cache for the / route
-    revalidatePath('/');
-    return {
-        id: id,
-    }
+    // Redirect to the home
+    redirect(`/`);
 }
