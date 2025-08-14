@@ -99,3 +99,11 @@ Defines the structure of a user object.
   "id": "361d798f-4b86-40c7-9a66-0fdc52df949a"
 }
 ```
+
+## Credits
+
+Developed by [Erny Sans](https://github.com/ernysans).
+
+## License
+
+This project is licensed under the MIT License.
