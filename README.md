@@ -93,6 +93,22 @@ The app will be available at the local URL provided by the emulator.
 
 -----
 
+## Testing Done (What You Tested and How)
+
+**Unit Tests**: Implemented using Jest and React Testing Library to test individual components.
+
+1. The test verifies that the "Add New User" page renders the form fields for "Name" and "Zip Code", as well as the "Add
+   User" button and "Cancel" link.
+2. Snapshot testing is used to ensure the UI remains consistent.
+
+### Run Tests
+
+```bash
+  npm run test
+```
+
+-----
+
 ## UI Paths
 
 | Path            | Description       |
@@ -143,12 +159,6 @@ Defines the structure of a user object.
   "zipCode": "94102",
   "id": "361d798f-4b86-40c7-9a66-0fdc52df949a"
 }
-```
-
-### Run Tests
-
-```bash
-  npm run test
 ```
 
 ## Credits
