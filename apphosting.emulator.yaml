@@ -1,0 +1,15 @@
+# Settings for Cloud Run
+# Environment variables and secrets
+env:
+  - variable: ENV
+    value: "development"
+  - variable: NEXT_PUBLIC_WWW
+    value: "http://localhost:5002"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_API
+    value: "http://localhost:5002/api"
+    availability:
+      - BUILD
+      - RUNTIME

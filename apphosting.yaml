@@ -1,0 +1,28 @@
+# Settings for Backend (on Cloud Run).
+# See https://firebase.google.com/docs/app-hosting/configure#cloud-run
+runConfig:
+  minInstances: 0
+  # maxInstances: 100
+  # concurrency: 80
+  # cpu: 1
+  # memoryMiB: 512
+
+# Environment variables and secrets.
+env:
+  - variable: ENV
+    value: "production"
+  - variable: NEXT_PUBLIC_WWW
+    value: "https://user-admin--fabricelements.us-central1.hosted.app"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_API
+    value: "https://user-admin--fabricelements.us-central1.hosted.app/api"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_OPENWATHERMAP_API_KEY
+    value: "7afa46f2e91768e7eeeb9001ce40de19"
+    availability:
+      - BUILD
+      - RUNTIME
