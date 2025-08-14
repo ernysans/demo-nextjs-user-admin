@@ -136,7 +136,7 @@ export const UserEdit = ({user}: { user: Promise<User> }) => {
                 <input type="hidden" name="id" value={userData.id}/>
                 <button
                     type="submit"
-                    disabled={pending}
+                    disabled={pendingDelete}
                     className={`w-full cursor-pointer px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600 transition ${pending ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                     Delete
