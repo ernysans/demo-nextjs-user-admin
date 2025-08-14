@@ -2,7 +2,7 @@
 
 import {User} from "@/lib/models/User";
 import {use, useActionState, useState} from "react";
-import {ActionResponse, updateUser} from "@/lib/actions";
+import {ActionResponse, deleteUser, updateUser} from "@/lib/actions";
 import Link from "next/link";
 
 const initialState: ActionResponse = {
@@ -20,6 +20,7 @@ export const UserEdit = ({user}: { user: Promise<User> }) => {
     const userData = use(user);
     const [form, setForm] = useState<User>(userData);
     const [state, action, pending] = useActionState(updateUser, initialState);
+    const [stateDelete, actionDelete, pendingDelete] = useActionState(deleteUser, initialState);
 
     return (
         <div className="space-y-6">
@@ -53,7 +54,8 @@ export const UserEdit = ({user}: { user: Promise<User> }) => {
                         />
                     </div>
                     <div className="grid grid-cols-1 gap-2">
-                        <label htmlFor="latitude" className="block text-sm font-medium text-gray-700 mb-1">Latitude</label>
+                        <label htmlFor="latitude"
+                               className="block text-sm font-medium text-gray-700 mb-1">Latitude</label>
                         <input
                             type="number"
                             id="latitude"
@@ -64,7 +66,8 @@ export const UserEdit = ({user}: { user: Promise<User> }) => {
                         />
                     </div>
                     <div className="grid grid-cols-1 gap-2">
-                        <label htmlFor="longitude" className="block text-sm font-medium text-gray-700 mb-1">Longitude</label>
+                        <label htmlFor="longitude"
+                               className="block text-sm font-medium text-gray-700 mb-1">Longitude</label>
                         <input
                             type="number"
                             id="longitude"
@@ -75,7 +78,8 @@ export const UserEdit = ({user}: { user: Promise<User> }) => {
                         />
                     </div>
                     <div className="grid grid-cols-1 gap-2">
-                        <label htmlFor="timezone" className="block text-sm font-medium text-gray-700 mb-1">Timezone</label>
+                        <label htmlFor="timezone"
+                               className="block text-sm font-medium text-gray-700 mb-1">Timezone</label>
                         <input
                             type="number"
                             id="timezone"
@@ -86,7 +90,8 @@ export const UserEdit = ({user}: { user: Promise<User> }) => {
                         />
                     </div>
                     <div className="grid grid-cols-1 gap-2">
-                        <label htmlFor="createdAt" className="block text-sm font-medium text-gray-700 mb-1">Created At</label>
+                        <label htmlFor="createdAt" className="block text-sm font-medium text-gray-700 mb-1">Created
+                            At</label>
                         <input
                             type="text"
                             id="createdAt"
@@ -97,7 +102,8 @@ export const UserEdit = ({user}: { user: Promise<User> }) => {
                         />
                     </div>
                     <div className="grid grid-cols-1 gap-2">
-                        <label htmlFor="updatedAt" className="block text-sm font-medium text-gray-700 mb-1">Updated At</label>
+                        <label htmlFor="updatedAt" className="block text-sm font-medium text-gray-700 mb-1">Updated
+                            At</label>
                         <input
                             type="text"
                             id="updatedAt"
@@ -124,6 +130,18 @@ export const UserEdit = ({user}: { user: Promise<User> }) => {
                     </button>
                 </div>
                 {state?.errors && <p className="mt-4 text-red-600">{state.errors}</p>}
+            </form>
+
+            <form action={actionDelete}>
+                <input type="hidden" name="id" value={userData.id}/>
+                <button
+                    type="submit"
+                    disabled={pending}
+                    className={`w-full cursor-pointer px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600 transition ${pending ? 'opacity-50 cursor-not-allowed' : ''}`}
+                >
+                    Delete
+                </button>
+                {stateDelete?.errors && <p className="mt-4 text-red-600">{stateDelete.errors}</p>}
             </form>
         </div>
     );
