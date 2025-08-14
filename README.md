@@ -100,6 +100,12 @@ Defines the structure of a user object.
 }
 ```
 
+### Run Tests
+
+```bash
+  npm run test
+```
+
 ## Credits
 
 Developed by [Erny Sans](https://github.com/ernysans).
