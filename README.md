@@ -13,36 +13,40 @@ Open this link to see the demo of the project: [Demo Link](https://user-admin--f
 2. A Firebase project set up with Realtime Database and App Hosting enabled.
 3. Download the Firebase Admin SDK and set up your service account credentials.
 
-## Getting Started
+-----
 
-### Set the service account credentials
+## How to Run Your Code (Step-by-Step Instructions)
+
+### 1. Set the service account credentials
 
 ```bash
   export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/service-account-file.json"
 ```
 
-### Install dependencies
+### 2. Install dependencies
 
 ```bash
   npm install
 ```
 
-### Connect to Firebase
+### 3. Connect to Firebase
 
-1. Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).
-2. Create a Realtime Database in your Firebase project.
-3. Set up Firebase App Hosting in your Firebase project.
-4. Download the Firebase Admin SDK and save the service account JSON file to your project directory.
-5. Connect the Firebase CLI to your project:
+* Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).
+* Create a Realtime Database in your Firebase project.
+* Set up Firebase App Hosting in your Firebase project.
+* Download the Firebase Admin SDK and save the service account JSON file to your project directory.
+* Connect the Firebase CLI to your project:
 
 ```bash
-  firebase login
-  firebase use YOURPROJECT_ID
+    firebase login
+    firebase use YOURPROJECT_ID
 ```
 
-### Configure Firebase Emulator (for local development)
+### 4. Configure Firebase Emulator (for local development)
 
-### Start the development server
+### 5. Run the development server
+
+The app will be available at the local URL provided by the emulator.
 
 ```bash
   firebase emulators:start
@@ -54,11 +58,50 @@ Open this link to see the demo of the project: [Demo Link](https://user-admin--f
   firebase deploy
 ```
 
+-----
+
+## Approach
+
+* Uses Next.js for server-side rendering and routing, React for UI, Firebase Realtime Database for database, and
+  Tailwind CSS for styling.
+* API routes are implemented in the src/app/api/users directory, following RESTful conventions.
+* UI pages are mapped to /users, /users/new, and /users/[id] for listing, creating, and editing users.
+
+-----
+
+## Implemented Features
+
+- User list page (/users)
+- Add new user page (/users/new)
+- Edit user page (/users/[id])
+- RESTful API endpoints for user CRUD operations
+- Firebase Realtime Database integration
+- Responsive UI with Tailwind CSS
+- Loading and error states
+- Unit and integration tests
+
+-----
+
+## Assumptions Made
+
+- Firebase Realtime Database is used for user data storage.
+- Service account credentials are available and correctly configured.
+- The app is run in a Node.js environment with npm.
+- All users have unique IDs.
+- The Firebase Emulator is used for local development and testing.
+- Authentication is not required for accessing user features.
+
+-----
+
 ## UI Paths
 
-- `/` or `/users` - User List Page
-- `/users/new` - Add New User Page
-- `/users/[id]` - Edit User Page
+| Path            | Description       |
+|-----------------|-------------------|
+| `/` or `/users` | User List Page    |
+| `/users/new`    | Add New User Page |
+| `/users/[id]`   | Edit User Page    |
+
+-----
 
 ## User API Endpoints
 
@@ -69,6 +112,8 @@ Open this link to see the demo of the project: [Demo Link](https://user-admin--f
 | POST   | `/users`      | Add a new user              | -              | `User` object (JSON) | Created `User` object   |
 | PATCH  | `/users/{id}` | Update an existing user     | `id` (string)  | Partial/full `User`  | Updated `User` object   |
 | DELETE | `/users/{id}` | Delete a user by their ID   | `id` (string)  | -                    | No content (success)    |
+
+-----
 
 ## User Interface
 
